@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock title %}
+
+{% block content %}
+<div class="row">
+    <h2>My Account</h2>
+</div>
+<br/>
+<div class="row">
+    <h4>Welcome {{ user.first_name }} {{ user.last_name }}</h4>
+    <br/>
+    <div>
+        <form method="post" action="">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <br/>
+                    <div class="col-md-12 col-sm-12">
+                        <label for="{{ form.content.id_for_label }}" class="form-label">Write About yourself</label>
+                    </div>
+                    <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
+                        {{ form.content }}
+                        <br/>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                    <div class="col-md-2 col-sm-2 col-md-offset-5 col-sm-offset-5">
+                        <button class="btn btn-lg btn-success btn-block" type="submit">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <br/>
+
+    <div class="row">
+        <div class="col-md-offset-2 col-sm-offset-2 col-md-8 col-sm-8">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4>About Yourself</h4>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        {{ user.profile.content }}
+                    </p>
+                    <p>
+                        Details Updated at: {{ user.profile.updated }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+            <a href="{% url 'account_logout' %}">
+                <button class="btn btn-dark btn-lg">Logout</button>
+            </a>
+        </div>
+    </div>
+    <br/>
+
+</div>
+{% endblock content %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<h1>Aspi.re</h1>
+<h3>Django Project</h3>
+<br>
+{% if user.is_authenticated %}
+<a href="{% url 'profile' %}" class="btn btn-dark btn-lg">My Account</a>
+<a href="{% url 'account_logout' %}" class="btn btn-dark btn-lg">Logout</a>
+{% else %}
+<a href="{% url 'account_login' %}" class="btn btn-dark btn-lg">Login</a>
+<a href="{% url 'account_signup' %}" class="btn btn-dark btn-lg">Register</a>
+{% endif %}
+<br/>
+{% endblock content %}
